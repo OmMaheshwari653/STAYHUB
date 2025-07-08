@@ -1,0 +1,22 @@
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+ cloud_name : process.env.CLOUD_NAME,
+api_key: process.env.Cloud_API_KEY,
+api_secret : process.env.CLOUD_API_SECRET,
+})
+
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'stayhub_DEV',
+    allowedFormats : ["png", "jpg", "svg", "jpeg", "ico"],
+  },
+});
+
+module.exports = {
+    cloudinary,
+    storage
+}

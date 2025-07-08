@@ -1,0 +1,101 @@
+<% layout("layouts/boilerplate") %>
+<br><br>
+<div class="row">
+    <div class="col-8 offset-2 ">
+         <div class="card border-0 shadow rounded-3 mb-4">
+             <div class="card-body p-4">
+        <h3  class="card-title mb-4" >Create a new listing</h3>
+        <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="listing[title]" 
+                placeholder="Add a catchy title" 
+                type="text" 
+                class="form-control"
+                required>
+                <div class="invalid-feedback">
+                     Enter Title
+                </div>
+             <div class="valid-feedback">
+                Looks Good!
+               </div>
+            </div>
+
+            
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" 
+                placeholder="Enter description" 
+                class="form-control" required></textarea>
+                <div class="invalid-feedback">
+                    Enter Description
+                </div>
+              <div class="valid-feedback">
+                Looks Good!
+               </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input name="listing[image]"
+                 type="file" 
+                 class="form-control"
+                 required>
+            </div>
+
+            <!-- <div class="row"> -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" 
+                    placeholder="5000" 
+                    type="text" 
+                    class="form-control"
+                    required>
+                    <div class="invalid-feedback">
+                        Enter Price
+                    </div>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                </div>
+
+                <div class="mb-3 ">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" 
+                    placeholder="India" 
+                    type="text" 
+                    class="form-control"
+                    required>
+                 <div class="invalid-feedback">
+                     Enter Country
+                  </div>
+                  <div class="valid-feedback">
+                    Looks Good!
+                  </div>
+                </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input name="listing[location]" 
+                placeholder="Taj Hotel, Kolkata, West Bengal" 
+                type="text"
+                 class="form-control"
+                 required>
+               <div class="invalid-feedback">
+                  Enter Location
+               </div>
+               <div class="valid-feedback">
+                Looks Good!
+               </div>
+            </div>
+
+            <button class="btn btn-dark add-btn">Add </button>
+          </form>
+        </div>
+    </div>
+</div>
+</div>
+    <br><br>
