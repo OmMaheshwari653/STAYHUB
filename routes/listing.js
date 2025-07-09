@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const ExpressError = require("../utils/expressError.js");
-const { listingSchema } = require("../joi.js");
-const Listing = require("../models/listing.js");
-const passport = require("passport");
 const {isLoggedIn, isOwner, validateListing} = require("../middleware.js");
 const ListingController = require("../controllers/listings.js");
 const multer = require('multer');
@@ -22,7 +18,7 @@ route("/")
  //New Route
  router.get("/new",
   isLoggedIn,
-   wrapAsync(ListingController.new));
+   ListingController.new);
 
 router
 .route("/:id")

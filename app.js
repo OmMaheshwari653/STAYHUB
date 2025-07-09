@@ -29,28 +29,10 @@ app.engine('ejs', ejsMate);
 
 //mongoose setup start
 const dbUrl = process.env.ATLAS_DB_URL
-
+main().catch(err => console.log(err));
 async function main() {
-  try {
-    await mongoose.connect(dbUrl, {
-      serverSelectionTimeoutMS: 30000, // 30s timeout for Render's cold starts
-      socketTimeoutMS: 45000,
-      connectTimeoutMS: 30000,
-      retryWrites: true,
-      retryReads: true
-    });
-    console.log("MongoDB connected!");
-  } catch (err) {
-    console.error("MongoDB connection error (retrying in 5s):", err);
-    setTimeout(main, 5000);
-  }
+  await mongoose.connect(dbUrl);
 }
-
-// Add connection event handlers
-mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB disconnected! Reconnecting...');
-  setTimeout(main, 5000);
-});
 //mongoose setup finish
 
 const store = MongoStore.create({
@@ -77,9 +59,9 @@ const sessionOptions = {
   }
 }
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// })
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 app.use(session(sessionOptions));
 app.use(flash());

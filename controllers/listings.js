@@ -1,4 +1,6 @@
 const Listing = require("../models/listing.js");
+const ExpressError = require("../utils/expressError.js")
+const { listingSchema } = require("../joi.js");
 
 // index route 
 module.exports.index = async(req, res) => {
@@ -69,9 +71,10 @@ module.exports.show = async(req, res) => {
      let filename = req.file.filename;
      listing.image = {url, filename}
      await listing.save();
-  req.flash("success", "Listing Updated");
-  res.redirect(`/listings/${id}`);
-  }}
+  }
+     req.flash("success", "Listing Updated");
+    res.redirect(`/listings/${id}`);
+}
 
 
   //Delete route
